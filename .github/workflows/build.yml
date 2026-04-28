@@ -689,7 +689,7 @@ jobs:
               EXEC_C="$KERNEL_ROOT/common/fs/exec.c"
               if [ -f "$EXEC_C" ]; then
                 if ! grep -q "#include <linux/susfs.h>" "$EXEC_C"; then
-                  sed -i '/#include <linux\/fs.h>/a #include <linux\/susfs.h>' "$EXEC_C"
+                  sed -i '1i #include <linux/susfs.h>' "$EXEC_C"
                   echo "已修复 fs/exec.c 缺少 susfs.h 头文件导致的隐式声明问题"
                 fi
               fi
